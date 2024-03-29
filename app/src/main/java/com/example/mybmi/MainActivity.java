@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+
     public void calcBMI(View view){
         EditText height = findViewById(R.id.etHeight);
         EditText weight = findViewById(R.id.etWeight);
