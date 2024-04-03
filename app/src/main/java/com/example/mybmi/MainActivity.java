@@ -39,25 +39,9 @@ public class MainActivity extends AppCompatActivity {
                 show.setText("我是女生");
             }
         });
-        apple.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                getFruits();
-
-            }
-        });
-        banana.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                getFruits();
-            }
-        });
-        orange.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                getFruits();
-            }
-        });
+        apple.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
+        banana.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
+        orange.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
 
 
     }
