@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MyBMI</string>
+    <string name="strCalc">Calc</string>
+    <string name="strinputWeight">Please input weight</string>
+    <string name="strinputHeight">Please input height</string>
 </resources>
