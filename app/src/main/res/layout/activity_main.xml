@@ -12,10 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:autofillHints="@string/strinputHeight"
         android:ems="10"
         android:hint="@string/strinputHeight"
         android:inputType="numberDecimal"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#78909C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,10 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:autofillHints="@string/strinputWeight"
         android:ems="10"
         android:hint="@string/strinputWeight"
         android:inputType="numberDecimal"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColorHint="#78909C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etHeight" />
@@ -54,5 +58,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btCalc" />
+
+    <Button
+        android:id="@+id/btGoNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="GoNext"
+        android:text="@string/strGoNext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="625dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

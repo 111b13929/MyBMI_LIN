@@ -3,4 +3,6 @@
     <string name="strCalc">Calc</string>
     <string name="strinputWeight">Please input weight</string>
     <string name="strinputHeight">Please input height</string>
+    <string name="strShowbmi">Your BMI</string>
+    <string name="strGoNext">GoNext</string>
 </resources>
