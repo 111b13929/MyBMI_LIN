@@ -1,5 +1,6 @@
 package com.example.mybmi;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
@@ -18,19 +22,31 @@ public class MainActivity extends AppCompatActivity {
     private EditText height;
     private EditText weight;
     private TextView show;
-
     private RadioGroup rgSex;
     private RadioButton rbMale;
     private RadioButton rbFemale;
     private CheckBox apple;
     private CheckBox banana;
     private CheckBox orange;
+    private String[] sex = {"男生", "女生"};
+    private String[] fruits = {"番茄", "香蕉", "橘子"};
+    private boolean[] fruitsSelect = {false, false, false};
+    private int sexSelect = 0;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
 
+        myListener();
+
+
+    }
+
+    private void myListener() {
         rgSex.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.rbMale){
                 show.setText("我是男生");
@@ -42,14 +58,12 @@ public class MainActivity extends AppCompatActivity {
         apple.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
         banana.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
         orange.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
-
-
     }
 
     private void getFruits() {
         String msg ="";
         if (apple.isChecked()){
-            msg += "蘋果";
+            msg += "番茄";
         }
         if (banana.isChecked()){
             msg += "香蕉";
@@ -60,6 +74,48 @@ public class MainActivity extends AppCompatActivity {
         show.setText("我喜歡吃" + msg);
     }
 
+    public void showDialog(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("BMI");
+        double bmi = getBmi();
+        String result = getString(R.string.strShowbmi) + bmi;
+        //顯示訊息
+//        builder.setMessage(result);
+        //單選
+//        builder.setSingleChoiceItems(sex, sexSelect, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                sexSelect = which;
+//            }
+//        });
+        builder.setMultiChoiceItems(fruits, fruitsSelect, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                fruitsSelect[which] = isChecked;
+            }
+        });
+        builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(MainActivity.this, sex[sexSelect], Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String msg = "";
+                for (int i = 0; i < fruitsSelect.length; i++){
+                    if (fruitsSelect[i]){
+                        msg += fruits[i];
+                    }
+                }
+                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.show();
+
+    }
+
     public void calcBMI(View view){
 
         double bmi = getBmi();
@@ -67,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
         String result = getString(R.string.strShowbmi) + bmi;
 
         show.setText(result);
+
+        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+
     }
 
     private double getBmi() {
