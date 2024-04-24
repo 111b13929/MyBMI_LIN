@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup rgSex;
     private RadioButton rbMale;
     private RadioButton rbFemale;
-    private CheckBox apple;
-    private CheckBox banana;
-    private CheckBox orange;
+    private CheckBox cbapple;
+    private CheckBox cbbanana;
+    private CheckBox cborange;
     private String[] sex = {"男生", "女生"};
     private String[] fruits = {"蘋果", "香蕉", "橘子"};
     private boolean[] fruitsSelect = {false, false, false};
@@ -54,20 +54,20 @@ public class MainActivity extends AppCompatActivity {
                 show.setText("我是女生");
             }
         });
-        apple.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
-        banana.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
-        orange.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
+        cbapple.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
+        cbbanana.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
+        cborange.setOnCheckedChangeListener((buttonView, isChecked) -> getFruits());
     }
 
     private void getFruits() {
         String msg ="";
-        if (apple.isChecked()){
+        if (cbapple.isChecked()){
             msg += "蘋果";
         }
-        if (banana.isChecked()){
+        if (cbbanana.isChecked()){
             msg += "香蕉";
         }
-        if (orange.isChecked()){
+        if (cborange.isChecked()){
             msg += "橘子";
         }
 
@@ -145,9 +145,9 @@ public class MainActivity extends AppCompatActivity {
         rgSex = findViewById(R.id.rgSex);
         rbMale = findViewById(R.id.rbMale);
         rbFemale = findViewById(R.id.rbFemale);
-        apple = findViewById(R.id.cbApple);
-        banana = findViewById(R.id.cbBanana);
-        orange = findViewById(R.id.cbOrange);
+        cbapple = findViewById(R.id.cbApple);
+        cbbanana = findViewById(R.id.cbBanana);
+        cborange = findViewById(R.id.cbOrange);
 
     }
 
