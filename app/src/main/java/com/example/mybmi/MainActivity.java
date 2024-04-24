@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox banana;
     private CheckBox orange;
     private String[] sex = {"男生", "女生"};
-    private String[] fruits = {"番茄", "香蕉", "橘子"};
+    private String[] fruits = {"番茄", "香蕉", "橘子", "蘋果",  "梨子"};
     private boolean[] fruitsSelect = {false, false, false};
     private int sexSelect = 0;
 
