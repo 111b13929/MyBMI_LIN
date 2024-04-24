@@ -26,12 +26,12 @@ public class ListActivity extends AppCompatActivity {
         list.add("橘子");
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spfruits = findViewById(R.id.spFruit);
         TextView tvshow1 = findViewById(R.id.tvShow1);
         ListView lvfruit = findViewById(R.id.lvFruit);
-        lvfruit.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        lvfruit.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         //spfruits.setAdapter(adapter);
         lvfruit.setAdapter(adapter);
 
