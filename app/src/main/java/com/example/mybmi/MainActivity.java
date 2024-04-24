@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox banana;
     private CheckBox orange;
     private String[] sex = {"男生", "女生"};
-    private String[] fruits = {"番茄", "香蕉", "橘子", "蘋果",  "梨子"};
+    private String[] fruits = {"蘋果", "香蕉", "橘子"};
     private boolean[] fruitsSelect = {false, false, false};
     private int sexSelect = 0;
 
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private void getFruits() {
         String msg ="";
         if (apple.isChecked()){
-            msg += "番茄";
+            msg += "蘋果";
         }
         if (banana.isChecked()){
             msg += "香蕉";
@@ -71,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         if (orange.isChecked()){
             msg += "橘子";
         }
+
         show.setText("我喜歡吃" + msg);
     }
 
@@ -80,14 +80,15 @@ public class MainActivity extends AppCompatActivity {
         double bmi = getBmi();
         String result = getString(R.string.strShowbmi) + bmi;
         //顯示訊息
-//        builder.setMessage(result);
+       builder.setMessage(result);
         //單選
-//        builder.setSingleChoiceItems(sex, sexSelect, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                sexSelect = which;
-//            }
-//        });
+       builder.setSingleChoiceItems(sex, sexSelect, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                sexSelect = which;
+            }
+        });
+        //多選
         builder.setMultiChoiceItems(fruits, fruitsSelect, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
         String result = getString(R.string.strShowbmi) + bmi;
 
-        show.setText(result);
+        //show.setText(result);
 
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
 
@@ -147,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         apple = findViewById(R.id.cbApple);
         banana = findViewById(R.id.cbBanana);
         orange = findViewById(R.id.cbOrange);
+
     }
 
     public void GoNext(View view) {
